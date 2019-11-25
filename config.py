@@ -9,9 +9,10 @@ bind = ":" + str(PORT)
 workers = multiprocessing.cpu_count() * 2 + 1
 threads = 2 * multiprocessing.cpu_count()
 timeout = 120
+keepalive = 5
 
-errorlog = '-'
 loglevel = 'debug'
 accesslog = '-'
+errorlog = '-'
 
-# spew = True
+spew = True

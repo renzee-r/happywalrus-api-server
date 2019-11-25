@@ -1,2 +1,30 @@
-runtime: python37
-env: standard
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: happywalrus-api
+  labels:
+    name: happywalrus-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: happywalrus-api
+  template:
+    metadata:
+      name: happywalrus-api
+      labels:
+        name: happywalrus-api
+    spec:
+      containers:
+        - name: happywalrus-api
+          image: gcr.io/happy-walrus-api/flask-app:v1
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: 256Mi
+            limits:
+              memory: 512Mi
+          env:
+            - name: DEBUG_MODE
+              value: "1"

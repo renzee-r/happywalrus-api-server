@@ -51,6 +51,7 @@ def readb64(uri):
 ##################################################
 app = Flask(__name__)
 cors = CORS(app)
+
 @app.route("/predict", methods=['POST'])
 def predict():
     start = time.time()
@@ -173,4 +174,4 @@ if __name__ == "__main__":
     ##################################################
 
     print('Starting the API')
-    app.run()
+    app.run(host="0.0.0.0")

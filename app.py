@@ -59,7 +59,8 @@ def predict():
     detection_graph = tf.Graph()
     with detection_graph.as_default():
         od_graph_def = tf.GraphDef()
-        with tf.gfile.GFile('gs://happy-walrus-api.appspot.com/frozen_inference_graph.pb', 'rb') as fid:
+        with tf.gfile.GFile('frozen_inference_graph.pb', 'rb') as fid:
+        # with tf.gfile.GFile('gs://happy-walrus-api.appspot.com/frozen_inference_graph.pb', 'rb') as fid:
             serialized_graph = fid.read()
             od_graph_def.ParseFromString(serialized_graph)
             tf.import_graph_def(od_graph_def, name='')
@@ -127,6 +128,93 @@ def predict():
 
     return jsonify(hazards)
 
+@app.route("/test", methods=['GET'])
+def test():
+    hazards = [
+        {
+            "category": "Falling Hazard",
+            "description": "Your child can climb chairs and injure themselves by falling off.         Any sharp corners or rough edges can also cause injury to your child.         Your child may also grab these chairs, causing them to tip over.",
+            "objects": [
+            {
+                "box": [
+                0.6806271076202393,
+                0.4436438977718353,
+                0.8952561616897583,
+                0.594990611076355
+                ],
+                "id": "3.0",
+                "name": "Stool",
+                "score": "0.99889565"
+            },
+            {
+                "box": [
+                0.6839051842689514,
+                0.8282555341720581,
+                0.8962242007255554,
+                0.9887881875038147
+                ],
+                "id": "3.0",
+                "name": "Stool",
+                "score": "0.9984786"
+            },
+            {
+                "box": [
+                0.6868025660514832,
+                0.6337275505065918,
+                0.7726359367370605,
+                0.7954311966896057
+                ],
+                "id": "1.0",
+                "name": "Chair",
+                "score": "0.9940637"
+            }
+            ],
+            "solution": "Climbing guards & corner guards"
+        },
+        {
+            "category": "Fire Hazard",
+            "description": "During and after use, these appliances produce extreme heat that can cause burns and fires.         Be aware of cooking ware on top or within these appliances as well.         Appliances with doors or handles can be tipped over and cause injury.         If these doors are not secured, your child can climb in.",
+            "objects": [
+            {
+                "box": [
+                0.5183354616165161,
+                0.35441187024116516,
+                0.5431620478630066,
+                0.49847567081451416
+                ],
+                "id": "2.0",
+                "name": "Stove",
+                "score": "0.99867105"
+            },
+            {
+                "box": [
+                0.3086070120334625,
+                0.07970692217350006,
+                0.49102744460105896,
+                0.1521143615245819
+                ],
+                "id": "4.0",
+                "name": "Oven",
+                "score": "0.97046924"
+            },
+            {
+                "box": [
+                0.4906770586967468,
+                0.08424205332994461,
+                0.8526846766471863,
+                0.16121844947338104
+                ],
+                "id": "4.0",
+                "name": "Oven",
+                "score": "0.93306625"
+            }
+            ],
+            "solution": "Heat guards, heat shields, & door guards"
+        }
+        ]
+
+    return jsonify(hazards)
+
 ##################################################
 # END API part
 ##################################################
@@ -174,4 +262,4 @@ if __name__ == "__main__":
     ##################################################
 
     print('Starting the API')
-    app.run(host="0.0.0.0")
+    app.run()

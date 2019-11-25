@@ -1,5 +1,9 @@
 FROM tensorflow/tensorflow:1.15.0-py3
+
 RUN apt update
+RUN apt-get update
+RUN apt-get install -y libsm6 libxext6 libxrender-dev
+
 WORKDIR /app
 ADD requirements.txt /app/requirements.txt
 RUN pip install -r /app/requirements.txt

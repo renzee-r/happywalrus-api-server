@@ -54,6 +54,7 @@ cors = CORS(app)
 
 @app.route("/predict", methods=['POST'])
 def predict():
+    print('Starting prediction...', flush=True)
     start = time.time()
 
     detection_graph = tf.Graph()
@@ -66,6 +67,8 @@ def predict():
             tf.import_graph_def(od_graph_def, name='')
 
         sess = tf.Session(graph=detection_graph)
+
+    print('Loaded graph...', flush=True)
 
     # Define input and output tensors (i.e. data) for the object detection classifier
     # Input tensor is the image
@@ -85,6 +88,7 @@ def predict():
 
     # print(request.json)
     imageFile = readb64(request.json['file'])
+    print('Loaded image...', flush=True)
 
     # Load image using OpenCV and
     # expand image dimensions to have shape: [1, None, None, 3]
@@ -96,6 +100,8 @@ def predict():
     (boxes, scores, classes, num) = sess.run(
         [detection_boxes, detection_scores, detection_classes, num_detections],
         feed_dict={image_tensor: image_expanded})
+
+    print('Performed prediction...', flush=True)
 
     pred_scores = scores[0]
     pred_boxes = boxes[0]
@@ -123,8 +129,9 @@ def predict():
             # # 'score' : pred_score, 
             # 'boxes' : boxes
         })
+    print('Finished post-processing...', flush=True)
 
-    print("Time spent handling the request: %f" % (time.time() - start))
+    print("Time spent handling the request: %f" % (time.time() - start), flush=True)
 
     return jsonify(hazards)
 

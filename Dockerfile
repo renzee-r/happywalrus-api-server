@@ -11,4 +11,4 @@ ADD frozen_inference_graph.pb /app/frozen_inference_graph.pb
 
 ADD . /app
 ENV PORT 8080
-CMD ["gunicorn", "app:app", "--config=config.py"]
+CMD ["gunicorn", "app:app", "--config=config.py", "--log-level=debug"]

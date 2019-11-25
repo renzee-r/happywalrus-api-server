@@ -4,7 +4,6 @@ import tensorflow as tf
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import numpy as np
-import os
 
 HAZARD_NAME = {
     1: 'Chair',
@@ -58,17 +57,22 @@ def predict():
     print('Starting prediction...', flush=True)
     start = time.time()
 
-    dirlist = os.listdir('.')
-    print(dirlist, flush=True)
-
+    print('Loading graph 1...', flush=True)
     detection_graph = tf.Graph()
+    print('Loading graph 2...', flush=True)
     with detection_graph.as_default():
+        print('Loading graph 3...', flush=True)
         od_graph_def = tf.GraphDef()
-        # with tf.gfile.GFile('frozen_inference_graph.pb', 'rb') as fid:
+        print('Loading graph 4...', flush=True)
+
         with tf.gfile.GFile('frozen_inference_graph.pb', 'rb') as fid:
+            print('Loading graph 5...', flush=True)
             serialized_graph = fid.read()
+            print('Loading graph 6...', flush=True)
             od_graph_def.ParseFromString(serialized_graph)
+            print('Loading graph 7...', flush=True)
             tf.import_graph_def(od_graph_def, name='')
+            print('Loading graph 8...', flush=True)
 
         sess = tf.Session(graph=detection_graph)
 

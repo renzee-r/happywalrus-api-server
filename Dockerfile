@@ -4,7 +4,7 @@ WORKDIR /app
 ADD requirements.txt /app/requirements.txt
 RUN pip install -r /app/requirements.txt
 
-RUN pip uninstall tensorboard
+RUN pip uninstall tensorboard -y
 RUN pip install tensorboard==1.15
 
 ADD . /app

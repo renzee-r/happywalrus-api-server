@@ -46,53 +46,65 @@ def readb64(uri):
    img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
    return img
 
+def load_graph(model_file):
+    graph = tf.Graph()
+    graph_def = tf.GraphDef()
+
+    with tf.gfile.GFile(model_file, "rb") as f:
+        graph_def.ParseFromString(f.read())
+    with graph.as_default():
+        tf.import_graph_def(graph_def, name='')
+
+    return graph
+
 ##################################################
 # API part
 ##################################################
 app = Flask(__name__)
 cors = CORS(app)
+graph = load_graph('frozen_inference_graph.pb')
 
 @app.route("/predict", methods=['POST'])
 def predict():
     print('Starting prediction...', flush=True)
     start = time.time()
 
-    print('Loading graph 1...', flush=True)
-    detection_graph = tf.Graph()
-    print('Loading graph 2...', flush=True)
-    with detection_graph.as_default():
-        print('Loading graph 3...', flush=True)
-        od_graph_def = tf.GraphDef()
-        print('Loading graph 4...', flush=True)
+    # print('Loading graph 1...', flush=True)
+    # detection_graph = tf.Graph()
+    # print('Loading graph 2...', flush=True)
+    # with detection_graph.as_default():
+    #     print('Loading graph 3...', flush=True)
+    #     od_graph_def = tf.GraphDef()
+    #     print('Loading graph 4...', flush=True)
 
-        with tf.gfile.GFile('frozen_inference_graph.pb', 'rb') as fid:
-            print('Loading graph 5...', flush=True)
-            serialized_graph = fid.read()
-            print('Loading graph 6...', flush=True)
-            od_graph_def.ParseFromString(serialized_graph)
-            print('Loading graph 7...', flush=True)
-            tf.import_graph_def(od_graph_def, name='')
-            print('Loading graph 8...', flush=True)
+    #     with tf.gfile.GFile('frozen_inference_graph.pb', 'rb') as fid:
+    #         print('Loading graph 5...', flush=True)
+    #         serialized_graph = fid.read()
+    #         print('Loading graph 6...', flush=True)
+    #         od_graph_def.ParseFromString(serialized_graph)
+    #         print('Loading graph 7...', flush=True)
+    #         tf.import_graph_def(od_graph_def, name='')
+    #         print('Loading graph 8...', flush=True)
 
-        sess = tf.Session(graph=detection_graph)
+    sess = tf.Session(graph=graph)
 
     print('Loaded graph...', flush=True)
 
     # Define input and output tensors (i.e. data) for the object detection classifier
     # Input tensor is the image
-    image_tensor = detection_graph.get_tensor_by_name('image_tensor:0')
+    image_tensor = graph.get_tensor_by_name('image_tensor:0')
 
     # Output tensors are the detection boxes, scores, and classes
     # Each box represents a part of the image where a particular object was detected
-    detection_boxes = detection_graph.get_tensor_by_name('detection_boxes:0')
+    detection_boxes = graph.get_tensor_by_name('detection_boxes:0')
 
     # Each score represents level of confidence for each of the objects.
     # The score is shown on the result image, together with the class label.
-    detection_scores = detection_graph.get_tensor_by_name('detection_scores:0')
-    detection_classes = detection_graph.get_tensor_by_name('detection_classes:0')
+    detection_scores = graph.get_tensor_by_name('detection_scores:0')
+    detection_classes = graph.get_tensor_by_name('detection_classes:0')
 
     # Number of objects detected
-    num_detections = detection_graph.get_tensor_by_name('num_detections:0')
+    num_detections = graph.get_tensor_by_name('num_detections:0')
 
     # print(request.json)
     imageFile = readb64(request.json['file'])
@@ -235,46 +247,5 @@ def test():
 ##################################################
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--frozen_model_filename", default="inference_graph/frozen_inference_graph.pb", type=str, help="Frozen model file to import")
-    args = parser.parse_args()
-
-    ##################################################
-    # Tensorflow part
-    ##################################################
-    print('Loading the model')
-    global detection_graph, sess, image_tensor, detection_boxes, detection_scores, detection_classes, num_detections
-
-    # detection_graph = tf.Graph()
-    # with detection_graph.as_default():
-    #     od_graph_def = tf.GraphDef()
-    #     with tf.gfile.GFile(args.frozen_model_filename, 'rb') as fid:
-    #         serialized_graph = fid.read()
-    #         od_graph_def.ParseFromString(serialized_graph)
-    #         tf.import_graph_def(od_graph_def, name='')
-
-    #     sess = tf.Session(graph=detection_graph)
-
-    # # Define input and output tensors (i.e. data) for the object detection classifier
-    # # Input tensor is the image
-    # image_tensor = detection_graph.get_tensor_by_name('image_tensor:0')
-
-    # # Output tensors are the detection boxes, scores, and classes
-    # # Each box represents a part of the image where a particular object was detected
-    # detection_boxes = detection_graph.get_tensor_by_name('detection_boxes:0')
-
-    # # Each score represents level of confidence for each of the objects.
-    # # The score is shown on the result image, together with the class label.
-    # detection_scores = detection_graph.get_tensor_by_name('detection_scores:0')
-    # detection_classes = detection_graph.get_tensor_by_name('detection_classes:0')
-
-    # # Number of objects detected
-    # num_detections = detection_graph.get_tensor_by_name('num_detections:0')
-
-
-    ##################################################
-    # END Tensorflow part
-    ##################################################
-
     print('Starting the API')
     app.run()

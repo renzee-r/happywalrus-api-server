@@ -1,5 +1,5 @@
-# FROM tensorflow/tensorflow:1.15.0-py3
-FROM python:3.6-jessie
+FROM tensorflow/tensorflow:1.15.0-py3
+# FROM python:3.6-jessie
 
 RUN apt update
 RUN apt-get update

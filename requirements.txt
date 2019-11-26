@@ -18,9 +18,9 @@ Jinja2==2.10.3
 # Keras-Preprocessing==1.1.0
 Markdown==3.1.1
 MarkupSafe==1.1.1
-mkl-fft==1.0.15
-mkl-random==1.1.0
-mkl-service==2.3.0
+# mkl-fft==1.0.15
+# mkl-random==1.1.0
+# mkl-service==2.3.0
 numpy==1.17.4
 opencv-python==4.1.2.30
 opt-einsum==3.1.0

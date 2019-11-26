@@ -86,7 +86,7 @@ def predict():
             tf.import_graph_def(od_graph_def, name='')
             print('Loading graph 8...', flush=True)
 
-    sess = tf.Session(graph=graph)
+        sess = tf.Session(graph=graph)
 
     print('Loaded graph...', flush=True)
 

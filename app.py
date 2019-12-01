@@ -62,33 +62,33 @@ def load_graph(model_file):
 ##################################################
 app = Flask(__name__)
 cors = CORS(app)
-# graph = load_graph('frozen_inference_graph.pb')
+graph = load_graph('frozen_inference_graph.pb')
 
 @app.route("/predict", methods=['POST'])
 def predict():
     print('Starting prediction...', flush=True)
     start = time.time()
 
-    print('Loading graph 1...', flush=True)
-    graph = tf.Graph()
-    print('Loading graph 2...', flush=True)
-    with graph.as_default():
-        print('Loading graph 3...', flush=True)
-        od_graph_def = tf.GraphDef()
-        print('Loading graph 4...', flush=True)
+    # print('Loading graph 1...', flush=True)
+    # graph = tf.Graph()
+    # print('Loading graph 2...', flush=True)
+    # with graph.as_default():
+    #     print('Loading graph 3...', flush=True)
+    #     od_graph_def = tf.GraphDef()
+    #     print('Loading graph 4...', flush=True)
 
-        with tf.gfile.GFile('frozen_inference_graph.pb', 'rb') as fid:
-            print('Loading graph 5...', flush=True)
-            serialized_graph = fid.read()
-            print('Loading graph 6...', flush=True)
-            od_graph_def.ParseFromString(serialized_graph)
-            print('Loading graph 7...', flush=True)
-            tf.import_graph_def(od_graph_def, name='')
-            print('Loading graph 8...', flush=True)
+    #     with tf.gfile.GFile('frozen_inference_graph.pb', 'rb') as fid:
+    #         print('Loading graph 5...', flush=True)
+    #         serialized_graph = fid.read()
+    #         print('Loading graph 6...', flush=True)
+    #         od_graph_def.ParseFromString(serialized_graph)
+    #         print('Loading graph 7...', flush=True)
+    #         tf.import_graph_def(od_graph_def, name='')
+    #         print('Loading graph 8...', flush=True)
 
-        sess = tf.Session(graph=graph)
+    sess = tf.Session(graph=graph)
 
-    print('Loaded graph...', flush=True)
+    print('Started session...', flush=True)
 
     # Define input and output tensors (i.e. data) for the object detection classifier
     # Input tensor is the image

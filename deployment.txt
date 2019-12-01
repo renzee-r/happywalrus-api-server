@@ -1,0 +1,14 @@
+# Connect to cluster
+gcloud container clusters get-credentials standard-cluster-1 --zone us-central1-a --project happy-walrus-api
+
+### For first cluser init
+# Apply config
+kubectl apply -f app.yaml
+# Expose port
+kubectl expose deployment happywalrus-api --type=LoadBalancer --port 80 --target-port 8080
+
+# Build/rebuild image. Update version number if needed
+gcloud builds --project happy-walrus-api submit --tag gcr.io/happy-walrus-api/flask-app:v2 .
+
+# Update cluster to use new image
+kubectl set image deployment/happywalrus-api happywalrus-api=gcr.io/happy-walrus-api/flask-app:v5

@@ -17,14 +17,14 @@ spec:
     spec:
       containers:
         - name: happywalrus-api
-          image: gcr.io/happy-walrus-api/flask-app:v21
+          image: gcr.io/happy-walrus-api/flask-app:v22
           ports:
             - containerPort: 8080
           resources:
             requests:
-              memory: 2Gi
-            limits:
               memory: 4Gi
+            limits:
+              memory: 6Gi
           env:
             - name: DEBUG_MODE
               value: "1"

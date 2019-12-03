@@ -5,6 +5,16 @@ RUN apt update
 RUN apt-get update
 RUN apt-get install -y libsm6 libxext6 libxrender-dev
 
+RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
+RUN dpkg -i cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
+
+# the cuda 10.0 key
+RUN apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub
+
+# install it!
+RUN apt-get update
+RUN apt-get install cuda
+
 WORKDIR /app
 ADD requirements.txt /app/requirements.txt
 RUN pip install -r /app/requirements.txt

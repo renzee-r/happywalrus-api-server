@@ -6,38 +6,87 @@ from flask_cors import CORS
 import numpy as np
 
 HAZARD_NAME = {
-    1: 'Chair',
-    2: 'Stove',
-    3: 'Stool',
-    4: 'Oven',
-    5: 'Ladder',
-    6: 'Sofa',
-    7: 'Stove/Oven'
+    1: 'Cabinet',
+    2: 'Chair',
+    3: 'Countertop',
+    4: 'Dishwasher',
+    5: 'Outlet',
+    6: 'Oven',
+    7: 'Sofa',
+    8: 'Stool',
+    9: 'Stove',
+    10: 'Utensil'
 }
 
 HAZARD_CATEGORY = {
     1: 'Falling Hazard',
-    2: 'Fire Hazard',
-    3: 'Falling Hazard',
+    2: 'Falling Hazard',
+    3: 'Struck-By Hazard',
     4: 'Fire Hazard',
-    5: 'Falling Hazard',
-    6: 'Falling Hazard',
-    7: 'Fire Hazard'
+    5: 'Electrical Hazard',
+    6: 'Fire Hazard',
+    7: 'Falling Hazard',
+    8: 'Falling Hazard',
+    9: 'Fire Hazard',
+    10: 'Struck-By Hazard'
 }
 
 HAZARD_DESCRIPTION = {
-    'Falling Hazard': 'Your child can climb chairs and injure themselves by falling off. \
-        Any sharp corners or rough edges can also cause injury to your child. \
-        Your child may also grab these chairs, causing them to tip over.',
-    'Fire Hazard': 'During and after use, these appliances produce extreme heat that can cause burns and fires. \
-        Be aware of cooking ware on top or within these appliances as well. \
-        Appliances with doors or handles can be tipped over and cause injury. \
-        If these doors are not secured, your child can climb in.'
+    'Falling Hazard': ['Falling is the most common cause of injury for children of all ages. \
+        A standing and toddling baby has frequent minor falls, can climb chairs, stools, stairs, sofa or ladder and injure them by falling off. \
+        Any corners or rough edges can also cause injury to your child. \
+        They may grab unfixed furniture, chairs or stools and cause them to tip over which can injure them.'],
+    'Fire Hazard': ['Of all the appliances in your kitchen, ovens and stove tops have the most potential for serious and even fatal injuries. \
+        Every day, over 300 children ages 0 to 19 are treated in emergency rooms for burn-related injuries and two children die as a result of being burned. \
+        Hot liquids cause two out of three burns in small children. \
+        A severe scald can kill a small child as their skin is much more sensitive than the skin of an adult.'],
+    'Struck-By Hazard': ['A handle pointed outward over the edge of the stove presents a temptation for the child to reach up and pull it down. \
+        This will quickly cause the pan and all of its contents to fall on your child, seriously causing injury and burns. \
+        Also it is all too easy for kids to bang their heads on the edges of countertops and kitchen islands'],
+    'Electrical Hazard': ['According to the National Fire Protection Association, approximately 2,400 children suffer \
+        from severe shock and burn caused by items being poked into the slots of electrical receptacles. \
+        Even more worrying, approximately 12 children die from these injuries each year. \
+        When a toddler sees a dangling cable, his or her first instinct is to pull it. \
+        If that cable is connected to a toaster on the counter above, that toaster can fall and injure the child.'],
 }
 
 HAZARD_SOLUTION = {
-    'Fire Hazard': 'Heat guards, heat shields, & door guards',
-    'Falling Hazard': 'Climbing guards & corner guards'
+    'Falling Hazard': ['Don''t leave a baby unattended on or near furniture', 
+                    'Place bumpers or guards or safety padding on sharp corners of furniture to protect child when they fall',
+                    'Keep babies strapped in when using high chairs and furniture',
+                    'Use chair locks that can connect chairs to each other and prevents it being pulled by the child'],
+    'Fire Hazard': ['Use the back burners to keep the front ones cool. If you must use the front ones, turn the pot handles toward the back.',
+                    'Always have a fire extinguisher or fire blanket in the kitchen.',
+                    'Keep hot drinks away from children and never hold a child while you have a hot drink.',
+                    'Install a stove guard around hot plates to protect young children from scalds.',
+                    'Install burner knob covers, or appliance locks or latches on the doors to oven so that your child can''t turn on the burners or open the oven.',
+                    'Put latches on the doors to the oven, microwave, and refrigerator, and install knob covers on all stove knobs'],
+    'Struck-By Hazard': ['Align the handles towards the back of the stove so your child cannot reach up and grab them.',
+                    'Place the heaviest objects in the lower parts of the shelves.',
+                    'If you have hot foods, liquids or grease in containers on the countertop, keep them away from the edge so your toddler can’t reach them.',
+                    'Shield countertop edges with soft corner protectors.',
+                    'Keep stools away from counters to discourage climbing.'],
+    'Electrical Hazard': ['Keep all cables safely out of reach or by putting appliances away when not in use.',
+                    'Use duct cord cover to put multiple cables in a sleeve to prevent tangling.',
+                    'Insert electrical outlet covers/safe plates to prevent your child from inserting a fork, finger, or tongue in the outlet.',
+                    'Turn on “lock” feature for any appliances with a button or switch, if they have one.',
+                    'Replace your old outlet cover with a baby safe one.']
+}
+
+HAZARD_PRODUCT = {
+    'Fire Hazard': [['Oven Locks', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=ab28f613d08ce7f3fb922aa7bd6730aa&camp=1789&creative=9325&index=aps&keywords=Child Proofing oven locks'],
+                    ['Stove Knob Covers', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=d09338e7b50502effbaa912542736137&camp=1789&creative=9325&index=aps&keywords=Child proof stove knob cover']],
+    'Falling Hazard': [['Corner Guards', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=10eb833dc79c986c84712c0af07f7c71&camp=1789&creative=9325&index=aps&keywords=Baby proof corner guards'],
+                    ['Cabinet Latches', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=86e8163554ba1b9ff4a084a9e8dc9d68&camp=1789&creative=9325&index=aps&keywords=Baby proof cabinet latches'],
+                    ['Drawer Locks', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=c047a8de2c4960e814436ce9663a0ea9&camp=1789&creative=9325&index=aps&keywords=Child proof drawer locks'],
+                    ['Child Safety Locks', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=daab8bb02059e2fa8adb2bb31966535b&camp=1789&creative=9325&index=aps&keywords=Child safety locks'],
+                    ['Child Safety Gates', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=23be7c709077a8d6416f9e66f20602db&camp=1789&creative=9325&index=aps&keywords=Child safety gate'],
+                    ['Anti-Tip Restraint', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=7e4abaa44dbe0f9a02698d60a263fcce&camp=1789&creative=9325&index=aps&keywords=Baby Proofing Hangman Anti-Tip Restraint']],
+    'Struck-By Hazard': [['Corner Guards', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=10eb833dc79c986c84712c0af07f7c71&camp=1789&creative=9325&index=aps&keywords=Baby proof corner guards'],
+                    ['Door Knob Covers', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=785b629c23df1d2cb1805aa9414350bb&camp=1789&creative=9325&index=aps&keywords=Baby proof door knob cover'],
+                    ['Child Safety Gates', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=23be7c709077a8d6416f9e66f20602db&camp=1789&creative=9325&index=aps&keywords=Child safety gate']],
+    'Electrical Hazard': [['Outlet Covers', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=4ddde2580f0aeb4d72fa6c1ef9dde690&camp=1789&creative=9325&index=aps&keywords=Baby proof outlet covers'],
+                    ['Power Strip Cover', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=eccdc7fe32c9e172d499831068577aa6&camp=1789&creative=9325&index=aps&keywords=Baby Proofing Power Strip Cover']]
 }
 
 def readb64(uri):
@@ -47,14 +96,22 @@ def readb64(uri):
    return img
 
 def load_graph(model_file):
+    print('Loading graph 1...', flush=True)
     graph = tf.Graph()
-    graph_def = tf.GraphDef()
-
-    with tf.gfile.GFile(model_file, "rb") as f:
-        graph_def.ParseFromString(f.read())
+    
+    print('Loading graph 2...', flush=True)
     with graph.as_default():
-        tf.import_graph_def(graph_def, name='')
+        print('Loading graph 3...', flush=True)
+        graph_def = tf.GraphDef()
+        print('Loading graph 4...', flush=True)
 
+        with tf.gfile.GFile(model_file, "rb") as f:
+            print('Loading graph 5...', flush=True)
+            graph_def.ParseFromString(f.read())
+            print('Loading graph 6...', flush=True)
+            tf.import_graph_def(graph_def, name='')
+    
+    print('Graph Loaded!', flush=True)
     return graph
 
 ##################################################
@@ -62,33 +119,33 @@ def load_graph(model_file):
 ##################################################
 app = Flask(__name__)
 cors = CORS(app)
-# graph = load_graph('frozen_inference_graph.pb')
+graph = load_graph('frozen_inference_graph.pb')
 
 @app.route("/predict", methods=['POST'])
 def predict():
     print('Starting prediction...', flush=True)
     start = time.time()
 
-    print('Loading graph 1...', flush=True)
-    graph = tf.Graph()
-    print('Loading graph 2...', flush=True)
-    with graph.as_default():
-        print('Loading graph 3...', flush=True)
-        od_graph_def = tf.GraphDef()
-        print('Loading graph 4...', flush=True)
+    # print('Loading graph 1...', flush=True)
+    # graph = tf.Graph()
+    # print('Loading graph 2...', flush=True)
+    # with graph.as_default():
+    #     print('Loading graph 3...', flush=True)
+    #     od_graph_def = tf.GraphDef()
+    #     print('Loading graph 4...', flush=True)
 
-        with tf.gfile.GFile('frozen_inference_graph.pb', 'rb') as fid:
-            print('Loading graph 5...', flush=True)
-            serialized_graph = fid.read()
-            print('Loading graph 6...', flush=True)
-            od_graph_def.ParseFromString(serialized_graph)
-            print('Loading graph 7...', flush=True)
-            tf.import_graph_def(od_graph_def, name='')
-            print('Loading graph 8...', flush=True)
+    #     with tf.gfile.GFile('frozen_inference_graph.pb', 'rb') as fid:
+    #         print('Loading graph 5...', flush=True)
+    #         serialized_graph = fid.read()
+    #         print('Loading graph 6...', flush=True)
+    #         od_graph_def.ParseFromString(serialized_graph)
+    #         print('Loading graph 7...', flush=True)
+    #         tf.import_graph_def(od_graph_def, name='')
+    #         print('Loading graph 8...', flush=True)
 
-        sess = tf.Session(graph=graph)
+    sess = tf.Session(graph=graph)
 
-    print('Loaded graph...', flush=True)
+    print('Started session...', flush=True)
 
     # Define input and output tensors (i.e. data) for the object detection classifier
     # Input tensor is the image
@@ -129,7 +186,7 @@ def predict():
 
     hazard_dict = defaultdict(list)
     for i, score in enumerate(pred_scores):
-        if score >= .6:
+        if score >= .7:
             hazard_object = {
                 'score': str(score),
                 'box': pred_boxes[i].tolist(),
@@ -145,6 +202,7 @@ def predict():
             'category': hazard_category,
             'description': HAZARD_DESCRIPTION[hazard_category],
             'solution': HAZARD_SOLUTION[hazard_category],
+            'product': HAZARD_PRODUCT[hazard_category],
             'objects': objects
             # # 'score' : pred_score, 
             # 'boxes' : boxes

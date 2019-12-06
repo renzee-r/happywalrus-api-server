@@ -18,6 +18,14 @@ HAZARD_NAME = {
     10: 'Utensil'
 }
 
+HAZARD_PRIORITY = {
+    'Falling Hazards': 0,
+    'Struck-By Hazards': 1,
+    'Thermal Hazards': 2,
+    'Poison Hazards': 3,
+    'Electrical Hazards': 4
+}
+
 HAZARD_CATEGORY = {
     1: 'Poison Hazards',
     2: 'Falling Hazards',
@@ -221,6 +229,7 @@ def predict():
     for hazard_category, objects in hazard_dict.items():
         hazards.append({
             'category': hazard_category,
+            'priority': HAZARD_PRIORITY[hazard_category],
             'description': HAZARD_DESCRIPTION[hazard_category],
             'solution': HAZARD_SOLUTION[hazard_category],
             'product': HAZARD_PRODUCT[hazard_category],
@@ -228,6 +237,8 @@ def predict():
             # # 'score' : pred_score, 
             # 'boxes' : boxes
         })
+
+    hazards = sorted(hazards, key = lambda i: i['priority']) 
     print('Finished post-processing...', flush=True)
 
     print("Time spent handling the request: %f" % (time.time() - start), flush=True)

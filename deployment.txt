@@ -8,7 +8,7 @@ kubectl apply -f app.yaml
 kubectl expose deployment happywalrus-api --type=LoadBalancer --port 80 --target-port 8080
 
 # Build/rebuild image. Update version number if needed
-gcloud builds --project happy-walrus-api submit --tag gcr.io/happy-walrus-api/flask-app:v2 .
+gcloud builds --project happy-walrus-api submit --tag gcr.io/happy-walrus-api/flask-app:v19 .
 
 # Update cluster to use new image
-kubectl set image deployment/happywalrus-api happywalrus-api=gcr.io/happy-walrus-api/flask-app:v5
+kubectl set image deployment/happywalrus-api happywalrus-api=gcr.io/happy-walrus-api/flask-app:v19

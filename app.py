@@ -41,81 +41,82 @@ HAZARD_CATEGORY = {
 
 HAZARD_DESCRIPTION = {
     'Falling Hazards': ['Falling is the most common cause of injury for children of all ages. \
-        A standing and toddling baby has frequent minor falls, can climb chairs, stools, stairs, sofa or ladder and injure them by falling off. \
+        A standing and toddling baby has frequent minor falls, can climb chairs, stools, stairs, sofas, or ladders, from which they can fall and become injured. \
         Any corners or rough edges can also cause injury to your child. \
         They may grab unfixed furniture, chairs or stools and cause them to tip over which can injure them.'],
+
+    'Struck-By Hazards': ['A handle jutting over a stove edge presents a temptation for a child to reach up and pull it down. \
+        This will quickly cause the pan and all of its contents to fall on your child, with the potential to cause blunt force injuries and burns. \
+        Children can also bang their heads on the edges of countertops, kitchen islands, and tables.'],
     
-    'Thermal Hazards': ['Of all the appliances in your kitchen, ovens, stove tops and dishwashers have the most potential for serious and even fatal injuries. \
+    'Thermal Hazards': ['Ovens, stovetops, and dishwashers have the potential to cause serious and even fatal injuries. \
         Every day, over 300 children ages 0 to 19 are treated in emergency rooms for burn-related injuries and two children die as a result of being burned. \
-        Hot liquids cause two out of three burns in small children. \
-        A severe scald can kill a small child as their skin is much more sensitive than the skin of an adult.'],
+        Hot liquids cause two out of three burns in small children.'],
+
+    'Poison Hazards': ['Accidental poisoning is common, especially among toddlers aged between one and three years. \
+        According to the American Association of Poison Control Centers, nearly 1 million possible poisonings of children under age 5 were reported in 2017. \
+        Children explore their environment as part of their normal, natural development and swallowing a poisonous substance, spilling it on the skin, \
+        spraying or splashing it in the eye, or inhaling it can all lead to poisoning. \
+        Within a kitchen, be especially wary of cleaning products such as bleaches, dishwasher detergents, oven cleaners, drain cleaners, methylated spirits, \
+        and turpentine that many people store beneath their sinks.'],
     
-    'Struck-By Hazards': ['A handle pointed outward over the edge of the stove presents a temptation for the child to reach up and pull it down. \
-        This will quickly cause the pan and all of its contents to fall on your child, seriously causing injury and burns. \
-        Also it is all too easy for kids to bang their heads on the edges of countertops and kitchen islands'],
-    
-    'Electrical Hazards': ['According to the National Fire Protection Association, approximately 2,400 children suffer \
-        from severe shock and burn caused by items being poked into the slots of electrical receptacles. \
-        Even more worrying, approximately 12 children die from these injuries each year. \
-        When a toddler sees a dangling cable, his or her first instinct is to pull it. \
-        If that cable is connected to a toaster on the counter above, that toaster can fall and injure the child.'],
-    
-    'Poison Hazards': ['Accidental poisoning is common, especially among toddlers aged between one and three years. \
-        According to the American Association of Poison Control Centers, nearly 1 million possible poisonings of children \
-        under age 5 were reported in 2017. Children explore their environment as part of their normal, natural development \
-        and  swallowing a poisonous substance, spilling it on the skin, spraying or splashing it in the eye or inhaling \
-        it can all lead to poisoning. Cleaning products such as bleaches, dishwasher powders, oven cleaners, drain cleaners, \
-        methylated spirits and turpentine that usually kept under kitchen sink cabinets are ones that need to be watched for']
+    'Electrical Hazards': ['According to the National Fire Protection Association, approximately 2,400 children suffer from severe shock and burn caused by \
+        items being poked into electrical receptacles. Even more worrying, approximately 12 children die from these injuries each year. \
+        Moreover, when a toddler sees a dangling cable, his or her first instinct is to pull it. If that cable is connected to a small \
+        appliance (e.g., toaster, electric mixer) on the counter above, that appliance can fall and injure the child.']
 }
 
 HAZARD_SOLUTION = {
-    'Falling Hazards': ['Don''t leave a baby unattended on or near furniture', 
+    'Falling Hazards': ['Don\'t leave a baby unattended on or near furniture', 
                     'Place bumpers or guards or safety padding on sharp corners of furniture to protect child when they fall',
                     'Keep babies strapped in when using high chairs and furniture',
                     'Use chair locks that can connect chairs to each other and prevents it being pulled by the child'],
+
+    'Struck-By Hazards': ['Align handles towards the back of the stove so your child cannot reach up and grab them',
+                    'Place the heaviest objects on lower shelves',
+                    'Keep hot foods, liquids, or grease in containers on kitchen surfaces away from the edge and out of a toddler\'s reach',
+                    'Shield countertop edges with soft corner protectors',
+                    'Keep stools and chairs away from counters to discourage climbing'],
     
-    'Thermal Hazards': ['Use the back burners to keep the front ones cool. If you must use the front ones, turn the pot handles toward the back.',
-                    'Always have a fire extinguisher or fire blanket in the kitchen.',
-                    'Keep hot drinks away from children and never hold a child while you have a hot drink.',
-                    'Install a stove guard around hot plates to protect young children from scalds.',
-                    'Install burner knob covers, or appliance locks or latches on the doors to oven so that your child can''t turn on the burners or open the oven.',
-                    'Put latches on the doors to the oven, microwave, and refrigerator, and install knob covers on all stove knobs'],
+    'Thermal Hazards': ['Use back burners to keep the front ones cool. If you must use front burners, turn the pot handles toward the back',
+                    'Always have a fire extinguisher or fire blanket in the kitchen',
+                    'Keep hot drinks away from children and never hold a child while you have a hot drink',
+                    'Install a stove guard around hot plates and stovetops to protect young children from scalds',
+                    'Install burner knob covers and appliance locks or latches on the doors to oven (as well as microwaves, refrigerators, and dishwashers) so that your child can\'t turn on the burners or open the oven',
+                    'Ensure ovens are anchored to the wall so that children cannot tip them over when their doors are open'],
+
+    'Poison Hazards': ['Lock and secure cabinets and drawers and consider use of magnetic locks',
+                    'Keep cleaning supplies out of a child\'s reach, especially avoid storing them unsecured in lower cabinets (e.g., under the sink)',],
     
-    'Struck-By Hazards': ['Align the handles towards the back of the stove so your child cannot reach up and grab them.',
-                    'Place the heaviest objects in the lower parts of the shelves.',
-                    'If you have hot foods, liquids or grease in containers on the countertop, keep them away from the edge so your toddler can’t reach them.',
-                    'Shield countertop edges with soft corner protectors.',
-                    'Keep stools away from counters to discourage climbing.'],
-    
-    'Electrical Hazards': ['Keep all cables safely out of reach or by putting appliances away when not in use.',
-                    'Use duct cord cover to put multiple cables in a sleeve to prevent tangling.',
-                    'Insert electrical outlet covers/safe plates to prevent your child from inserting a fork, finger, or tongue in the outlet.',
-                    'Turn on “lock” feature for any appliances with a button or switch, if they have one.',
-                    'Replace your old outlet cover with a baby safe one.'],
-    
-    'Poison Hazards': ['Lock and secure cabinets and drawers and consider use of magnetic locks.',
-                    'Keep cleaning supplies out of a child''s reach, especially avoid having them under sink cabinet to avoid poisoning.',]
+    'Electrical Hazards': ['Keep all cables safely out of reach or put appliances away when not in use',
+                    'Use duct cord cover to put multiple cables in a sleeve to prevent tangling',
+                    'Insert electrical outlet covers/safe plates to prevent your child from inserting a fork, finger, tongue, or other object in outlets',
+                    'Engage the “lock” feature for any appliances with a button or switch, if they have one',
+                    'Replace your old outlet cover with a baby-safe one']
 }
 
 HAZARD_PRODUCT = {
-    'Thermal Hazards': [['Oven Locks', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=ab28f613d08ce7f3fb922aa7bd6730aa&camp=1789&creative=9325&index=aps&keywords=Child Proofing oven locks'],
-                    ['Stove Knob Covers', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=d09338e7b50502effbaa912542736137&camp=1789&creative=9325&index=aps&keywords=Child proof stove knob cover']],
-    
     'Falling Hazards': [['Corner Guards', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=10eb833dc79c986c84712c0af07f7c71&camp=1789&creative=9325&index=aps&keywords=Baby proof corner guards'],
                     ['Drawer Locks', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=c047a8de2c4960e814436ce9663a0ea9&camp=1789&creative=9325&index=aps&keywords=Child proof drawer locks'],
                     ['Child Safety Gates', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=23be7c709077a8d6416f9e66f20602db&camp=1789&creative=9325&index=aps&keywords=Child safety gate'],
-                    ['Anti-Tip Restraint', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=7e4abaa44dbe0f9a02698d60a263fcce&camp=1789&creative=9325&index=aps&keywords=Baby Proofing Hangman Anti-Tip Restraint']],
+                    ['Anti-Tip Restraint', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=7e4abaa44dbe0f9a02698d60a263fcce&camp=1789&creative=9325&index=aps&keywords=Baby Proofing Hangman Anti-Tip Restraint'],
+                    ['Chair Locks', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=1d68d26f396d951e7d6addb1cb756389&camp=1789&creative=9325&index=aps&keywords=child proof chair locks']],
     
     'Struck-By Hazards': [['Corner Guards', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=10eb833dc79c986c84712c0af07f7c71&camp=1789&creative=9325&index=aps&keywords=Baby proof corner guards'],
                     ['Door Knob Covers', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=785b629c23df1d2cb1805aa9414350bb&camp=1789&creative=9325&index=aps&keywords=Baby proof door knob cover'],
-                    ['Child Safety Gates', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=23be7c709077a8d6416f9e66f20602db&camp=1789&creative=9325&index=aps&keywords=Child safety gate']],
+                    ['Child Safety Gates', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=23be7c709077a8d6416f9e66f20602db&camp=1789&creative=9325&index=aps&keywords=Child safety gate'],
+                    ['Appliance Locks/Latches', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=d3dd84c17f91b6c438d46e8d8ff4679c&camp=1789&creative=9325&index=aps&keywords=Appliance locks or latches']],
     
-    'Electrical Hazards': [['Outlet Covers', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=4ddde2580f0aeb4d72fa6c1ef9dde690&camp=1789&creative=9325&index=aps&keywords=Baby proof outlet covers'],
-                    ['Power Strip Cover', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=eccdc7fe32c9e172d499831068577aa6&camp=1789&creative=9325&index=aps&keywords=Baby Proofing Power Strip Cover']],
+    'Thermal Hazards': [['Oven Locks', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=ab28f613d08ce7f3fb922aa7bd6730aa&camp=1789&creative=9325&index=aps&keywords=Child Proofing oven locks'],
+                    ['Stove Knob Covers', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=d09338e7b50502effbaa912542736137&camp=1789&creative=9325&index=aps&keywords=Child proof stove knob cover'],
+                    ['Oven Anchors', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=25414bb81508eccd758483fb2a0d7c8e&camp=1789&creative=9325&index=aps&keywords=Oven Anti-Tip Bracket']],
     
     'Poison Hazards': [['Cabinet Latches', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=86e8163554ba1b9ff4a084a9e8dc9d68&camp=1789&creative=9325&index=aps&keywords=Baby proof cabinet latches'],
-                    ['Child Safety Locks', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=daab8bb02059e2fa8adb2bb31966535b&camp=1789&creative=9325&index=aps&keywords=Child safety locks']]
+                    ['Child Safety Locks', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=daab8bb02059e2fa8adb2bb31966535b&camp=1789&creative=9325&index=aps&keywords=Child safety locks']],
 
+    'Electrical Hazards': [['Outlet Covers', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=4ddde2580f0aeb4d72fa6c1ef9dde690&camp=1789&creative=9325&index=aps&keywords=Baby proof outlet covers'],
+                    ['Power Strip Covers', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=eccdc7fe32c9e172d499831068577aa6&camp=1789&creative=9325&index=aps&keywords=Baby Proofing Power Strip Cover'],
+                    ['Duct Cord Covers', 'https://www.amazon.com/gp/search?ie=UTF8&tag=nmohan-20&linkCode=ur2&linkId=fe4369d3c2510fb9d97918c9af8e6c2d&camp=1789&creative=9325&index=aps&keywords=Duct cord cover']]
 }
 
 def readb64(uri):
